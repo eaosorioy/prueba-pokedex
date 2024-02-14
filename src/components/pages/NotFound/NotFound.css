@@ -1,0 +1,31 @@
+.pokemon-not-found {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pokemon-not-found__title {
+    font-size: 96px;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+.pokemon-not-found__subtitle {
+    font-size: 48px;
+    margin-bottom: 48px;
+    width: fit-content;
+}
+
+.pokemon-not-found__message {
+    font-size: 24px;
+    width: fit-content;
+    margin-bottom: 48px;
+}
+
+.pokemon-not-found__back {
+    height: 20px;
+    min-width: 120px;
+    width: fit-content;
+}
