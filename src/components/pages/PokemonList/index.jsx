@@ -1,11 +1,11 @@
 import './PokemonList.css';
 
 import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import httpGet from '../../../api/http';
 import PokemonCard from '../../atoms/PokemonCard';
 import { API_BASE } from '../../../common/constants/api';
 import SearchBar from '../../molecules/SearchBar';
-import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const MAX_POKEMON_AMOUNT = 150;
 const PAGE_SIZE = 10;
