@@ -79,7 +79,12 @@ function PokemonDetails() {
     return (
         <main className="pokemon-details">
             <div className="pokemon-details__graph">
-                <img className="pokemon-details__pic" src={pokemon.uri} alt={`${pokemon.name}-image`} />
+                <img
+                    className="pokemon-details__pic"
+                    data-testid={`${pokemon.name}-image`}
+                    src={pokemon.uri}
+                    alt={`${pokemon.name}-image`}
+                />
             </div>
             <div className="pokemon-details__info">
                 <div className="pokemon-details__info-heading">

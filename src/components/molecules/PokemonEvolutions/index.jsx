@@ -5,15 +5,12 @@ function PokemonEvolutions({ evolutions }) {
             {
                 evolutions && evolutions.map(({ name, next }, idx) => {
                     return (
-                        <>
-                            <span
-                                key={`${name}-${idx}`}
-                                className="pokemon-details__evolution"
-                            >
+                        <div key={`${name}-${idx}`}>
+                            <span className="pokemon-details__evolution">
                                 {name}
                             </span>
-                            <PokemonEvolutions key={`${name}-${idx}-${idx}`} evolutions={next} />
-                        </>
+                            <PokemonEvolutions evolutions={next} />
+                        </div>
                     );
                 })
             }

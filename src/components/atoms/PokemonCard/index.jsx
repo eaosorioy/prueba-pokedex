@@ -25,8 +25,17 @@ function PokemonCard({ url }) {
     if (!pokemon) return null;
 
     return (
-        <li className="pokemon-card" onClick={() => onClick(pokemon.id)}>
-            <img className="pokemon-card__pic" src={pokemon.uri} alt={`${pokemon.name}-image`} />
+        <li
+            className="pokemon-card"
+            onClick={() => onClick(pokemon.id)}
+            data-testid={`${pokemon.name}-card`}
+        >
+            <img
+                data-testid={`${pokemon.name}-image`}
+                className="pokemon-card__pic"
+                src={pokemon.uri}
+                alt={`${pokemon.name}-image`}
+            />
             <h2 className="pokemon-card__title">{pokemon.name}</h2>
         </li>
     );

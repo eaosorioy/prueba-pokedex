@@ -18,6 +18,7 @@ function SearchBar() {
                 <input
                     className="pokemon-search__input"
                     placeholder="Search a Pokemon"
+                    data-testid="search"
                     type="search"
                     name="search"
                     onChange={(e) => setInputValue(e.target.value) }
