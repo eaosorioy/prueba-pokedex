@@ -99,10 +99,12 @@ function PokemonDetails() {
                 </div>
                 <PokemonStats stats={pokemon.stats} />
                 <PokemonTypes types={pokemon.types} />
-                <div>
-                    <h2>Evolutions</h2>
-                    <PokemonEvolutions evolutions={pokemon.evolutions} />
-                </div>
+                {(!pokemon?.evolutions || !pokemon.evolutions[0]) ? null : (
+                    <div>
+                        <h2>Evolutions</h2>
+                        <PokemonEvolutions evolutions={pokemon.evolutions} />
+                    </div>
+                )}
             </div>
         </main>
     );

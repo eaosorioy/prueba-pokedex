@@ -5,6 +5,7 @@ import httpGet from '../../../api/http';
 import PokemonCard from '../../atoms/PokemonCard';
 import { API_BASE } from '../../../common/constants/api';
 import SearchBar from '../../molecules/SearchBar';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const MAX_POKEMON_AMOUNT = 150;
 const PAGE_SIZE = 10;
@@ -18,8 +19,10 @@ function getTotalPages() {
 }
 
 function PokemonList() {
-    const [page, setPage] = useState(1);
     const [pokemonList, setPokemonList] = useState([]);
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const page = searchParams.get('page') ?? 1;
     const totalPages = getTotalPages();
 
     useEffect(() => {
@@ -32,7 +35,7 @@ function PokemonList() {
     function onPageChange(step) {
         if ((page === 1 && step === -1) || (page === totalPages && step === 1)) return;
 
-        setPage(prevPage => prevPage + step);
+        navigate(`?page=${parseInt(page) + step}`);
     }
 
     return (
@@ -45,11 +48,11 @@ function PokemonList() {
             <div className="pokemon-pagination">
                 <span>Total {MAX_POKEMON_AMOUNT}</span>
                 <div>
-                    <button type="button" onClick={() => setPage(1)}>{'<<'}</button>
+                    <button type="button" onClick={() => navigate(`?page=${1}`)}>{'<<'}</button>
                     <button type="button" onClick={() => onPageChange(-1)}>{'<'}</button>
                     <span>{page} / {getTotalPages()}</span>
                     <button type="button" onClick={() => onPageChange(1)}>{'>'}</button>
-                    <button type="button" onClick={() => setPage(totalPages)}>{'>>'}</button>
+                    <button type="button" onClick={() => navigate(`?page=${totalPages}`)}>{'>>'}</button>
                 </div>
             </div>
         </main>

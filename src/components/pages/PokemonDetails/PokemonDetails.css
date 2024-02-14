@@ -5,6 +5,7 @@
     width: 100%;
     justify-content: center;
     padding: 0 20px;
+    height: 100vh;
 }
 
 .pokemon-details__graph {
@@ -51,7 +52,8 @@
 }
 
 .pokemon-details__stats,
-.pokemon-details__types {
+.pokemon-details__types,
+.pokemon-details__evolutions {
     display: flex;
     margin-top: 16px;
     flex-wrap: wrap;
@@ -79,11 +81,16 @@
 }
 
 .pokemon-details__stat-value,
-.pokemon-details__type {
+.pokemon-details__type,
+.pokemon-details__evolution {
     text-align: center;
     background-color: #CCCCCC;
     width: fit-content;
     padding: 4px 8px;
     border-radius: 16px;
     font-size: 14px;
+}
+
+.pokemon-details__evolution {
+    margin-bottom: 10px;
 }

@@ -1,8 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import PokemonList from './index';
-
-const mockNavigate = vi.fn();
+import { MemoryRouter } from 'react-router-dom';
 
 vi.mock("../../../api/http", () => ({
     default: vi.fn().mockReturnValue(
@@ -59,18 +58,13 @@ vi.mock("../../atoms/PokemonCard", () => ({
     default: () => <li data-testid="mock-card"></li>
 }));
 
-vi.mock("react-router-dom", async (importOriginal) => {
-    const mod = await importOriginal();
-
-    return {
-        ...mod,
-        useNavigate: () => mockNavigate
-    }
-});
-
 describe('PokemonList Component', () => {
     it('Shoudl render the PokemonList', async () => {
-        await act(() => render(<PokemonList />));
+        await act(() => render(
+            <MemoryRouter initialEntries={['/']}>
+                <PokemonList />
+            </MemoryRouter>
+        ));
 
         expect(screen.getByText('150 Pokemon List')).toBeInTheDocument();
         expect(screen.getAllByTestId('mock-card').length).toEqual(10);

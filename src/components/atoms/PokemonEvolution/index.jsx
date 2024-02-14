@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
 function PokemonEvolution({ name }) {
+    if (!name) return null;
+
     return (
         <span className="pokemon-details__evolution">
             {name}
@@ -9,7 +11,7 @@ function PokemonEvolution({ name }) {
 }
 
 PokemonEvolution.propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.string
 };
 
 export default PokemonEvolution;
